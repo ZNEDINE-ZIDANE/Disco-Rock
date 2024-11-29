@@ -1,0 +1,388 @@
+{% extends 'layout.html' %}
+{% block titulo %} Usuarios {% endblock %}
+{% block contenido %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Disco Rock - Registro</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a244cade9a.js" crossorigin="anonymous"></script>
+ <style>
+    body {
+      background-color: #d5d8dc;
+      font-family: Arial, sans-serif;
+    }
+
+
+     nav.navbar {
+      background-color: red;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: white !important;
+    }
+
+    .nav-link {
+      font-size: 1.1rem;
+      color: black !important;
+    }
+
+    .nav-link:hover {
+      color: grey !important;
+    }
+
+    .form-control {
+      border-radius: 10px;
+    }
+
+    button.btn {
+      border-radius: 10px;
+    }
+
+    form {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-primary {
+      background-color: #74C0FC;
+      border-color: #74C0FC;
+    }
+
+    .btn-primary:hover {
+      background-color: #5A9ED8;
+      border-color: #5A9ED8;
+    }
+
+    /* Responsivo para pantalla pequeña */
+    @media (max-width: 768px) {
+      .navbar-brand {
+        font-size: 1.2rem;
+      }
+
+      .nav-link {
+        font-size: 1rem;
+      }
+    }
+
+    .footer{
+        position: relative;
+        width: 100%;
+        background: red;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       }
+
+        .social-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 10px 5px;
+            flex-wrap: wrap;
+        }       
+
+        .icon-elem {
+            list-style: none;
+        }
+
+        .icon{
+            color: white;
+            font-size: 32px;
+            display: inline-block;
+            margin: 0 10px;
+            transition: 0.5s;      
+        }
+
+        .icon:hover{
+            transform: translateY(-10px);       
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .menu-elem {
+            list-style: none;  
+        }
+
+        .menu-icon {
+            color: white;
+            font-size: 20px;
+            display: inline-block;
+            text-decoration: none;
+            margin: 5px 10px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            opacity: 1;
+        }
+
+        .text{
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+  </style>
+
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/templates/home.html">
+      <i class="fa-solid fa-compact-disc" style="color: #000000;"></i> Disco Rock
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/templates/home.html">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/templates/signin.html">Iniciar Sesion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/templates/usuarios.html">
+            <i class="fa-solid fa-user" style="color: white;"></i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/templates/productos.html">
+              <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
+          </a>
+      </li>
+      </ul>
+      <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">
+          <i class="fa-solid fa-magnifying-glass" style="color: #74C0FC"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+  {% with mensajes = get_flashed_messages() %}
+    {% if mensajes %}
+    {% for m in mensajes %}
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{ m }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+
+  <!-- Tabla responsiva -->
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">Nombre</th>
+          <th scope="col">Correo</th>
+          <th scope="col">Fecha de Registro</th>
+          <th scope="col">Perfil</th>
+          <th scope="col" colspan="2">
+              <!-- Button insert -->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="insert">
+                <i class="fa-solid fa-plus"></i> 
+               </button>
+          </th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for u in usuarios %}
+        <tr>
+          <th scope="row">{{u.0}}</th>
+          <td>{{u.1}}</td>
+          <td>{{u.2}}</td>
+          <td>{{u.3}}</td>
+          <td>{{u.4}}</td>
+          <td>{{u.5}}</td>
+          <td>
+              <!-- Button update-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#update{{u.0}}">
+                  <i class="fa-solid fa-pen-to-square"></i>
+               </button>
+          </td>
+          <td>
+              <!-- Button delete-->
+               <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#delete{{u.0}}">
+                <i class="fa-solid fa-user-xmark" style="color: #74C0FC;"></i> 
+               </button>
+          </td>
+        </tr>
+
+        <!-- Modal insert -->
+         <div class="modal fade" id="insert" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Nuevo Usuario</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/iUsuario" method="post">
+                  <div class="modal-body">
+                    <div class="col-md-6">
+                      <label for="inputName" class="form-label">Nombre</label>
+                      <input type="text" name="nombre" class="form-control" id="inputName" required>
+                    </div>
+                    <div class="col-md-6">
+                      <label for="inputEmail4" class="form-label">Email</label>
+                      <input type="email" name="correo" class="form-control" id="inputEmail4" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Contraseña</label>
+                    <input type="password" name="clave" class="form-control" id="inputPassword4" required>
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Perfil</label>
+                    <select name="perfil" class="form-select" aria-label="Default select example" required>
+                      <option selected>Selecciona Perfil</option>
+                      <option value="A">Administrador</option>
+                      <option value="U">Usuario</option>
+                    </select>
+                  </div>
+                  <div class="modal-foter">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar Uduario</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+         </div>
+
+         <!-- Modal Update-->
+          <div class="modal fade" id="update{{u.0}}" data-bs-backdrop="static" data_bs_keyboard="false" tabindex="1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="staticBackdropLabel">Actualizar Usuario</h1>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/uUsuario/{{u.0}}" method="post">
+                  <div class="modal-body">
+                    <div class="col-md-6">
+                      <label for="inputName" class="form-label">Nombre</label>
+                      <input type="text" name="nombre" value="{{u.1}}" class="form-control" id="inputName">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="text" name="correo" value="{{u.2}}" class="form-control" id="inputEmail4">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputPassword4" class="form-label">Perfil</label>
+                    <select name="perfil" class="form-select" aria-label="Default select example">
+                      <option selected>Escoge un perfil</option>
+                      <option {% if u.5 == "A" %} selected {% endif %} value="A">Administrador</option>
+                      <option {% if u.5 == "U" %} selected {% endif %} value="U">Usuario</option>
+                    </select>
+                  </div>
+              </div>
+              <div class="modal-foter">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="submit" class="btn btn-primary">Actualizar Usuario</button>
+              </div>
+            </form>
+           </div>
+          </div>
+        </div>
+
+        <!-- Modal delete-->
+         <div class="modal fade" id="delete{{u.0}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="/dUsuarios/{{u.0}}">
+                  <div class="modal-body">
+                    <p><i class="fa-solid fa-triangle-exclamation fa-2xl" style="color: red;"></i> seguro de eliminar el usuario {{u.1}}?</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+         </div>
+
+         {% endfor%}
+      </tbody>
+    </table>
+  </div> 
+</div>
+<footer class="footer">
+  <ul class="social-icon">
+      <li class="icon-elem">
+          <a href="" class="icon">
+              <i class="fa-brands fa-youtube" style="color: #000000;"></i>
+          </a>
+      </li>
+      <li class="icon-elem">
+          <a href="" class="icon">
+              <i class="fa-brands fa-instagram" style="color: #000000;"></i>  
+          </a>
+      </li>
+      <li class="icon-elem">
+          <a href="" class="icon">
+              <i class="fa-brands fa-whatsapp" style="color: #000000;"></i>
+          </a>
+      </li>
+      <li class="icon-elem">
+          <a href="" class="icon">
+              <i class="fa-brands fa-facebook" style="color: #000000;"></i> 
+          </a>
+      </li>
+      <li class="icon-elem">
+          <a href="" class="icon">
+              <i class="fa-regular fa-envelope" style="color: #000000;"></i>
+          </a>
+      </li>
+  </ul>
+  <ul class="menu">
+      <li class="menu-elem">
+          <a href="" class="menu-icon"> Inicio</a>
+      </li>
+      <li class="menu-elem">
+          <a href="" class="menu-icon"> Equipo</a>
+      </li>
+      <li class="menu-elem">
+          <a href="" class="menu-icon">Contacto </a>
+      </li>
+      <li class="menu-elem">
+          <a href="" class="menu-icon">Video </a>
+      </li>
+      <li class="menu-elem">
+          <a href="" class="menu-icon">Sobre Nosotros </a>
+      </li>
+  </ul>
+  <p class="text">Todos los derechos reservados</p>
+  <p class="text">© 2024 Disco Rock, Inc</p>
+</footer>

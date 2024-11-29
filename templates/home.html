@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Disco Rock</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a244cade9a.js" crossorigin="anonymous"></script>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #d5d8dc;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        nav.navbar {
+            background-color:red;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .navbar-brand {
+            color: white !important;
+            font-size: 1.5rem;
+            font-weight: bold;
+            ;
+        }
+
+        .nav-link {
+            color:black !important;
+            font-size: 1.1rem;
+        }
+
+        .nav-link:hover {
+            color:grey !important;
+        }
+
+      
+        header {
+            background-color: white;
+            padding: 20px;
+        }
+
+        .main-section h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .main-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+        }
+
+        .btn {
+            background-color: #B197FC;
+            color: #ffffff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+
+        .btn:hover {
+            background-color: #B197FC;
+        }
+
+        .image-container {
+            position: relative;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        form {
+        background-color: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-control {
+        border-radius: 10px;
+        }
+
+        .btn-primary:hover {
+        background-color: #5A9ED8;
+        border-color: #5A9ED8;
+        }
+
+        .btn-primary {
+         background-color: #74C0FC;
+        border-color: #74C0FC;
+        }
+
+        .image-container img {
+            border-radius: 15px;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.20);
+        }
+
+        .image-container:hover img{
+        transform: scale(1.05);
+         }
+
+         .image-container img{
+        object-fit: cover;
+        border-radius: 10px 10px 0 0;
+         transition: all .8s;
+         }
+
+
+        .text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #ffffff;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.20);
+        }
+
+       .footer{
+        position: relative;
+        width: 100%;
+        background:red;
+        min-height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+       }
+
+        .social-icon{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 10px 5px;
+            flex-wrap: wrap;
+        }       
+
+        .icon-elem {
+            list-style: none;
+        }
+
+        .icon{
+            color: white;
+            font-size: 32px;
+            display: inline-block;
+            margin: 0 10px;
+            transition: 0.5s;      
+        }
+
+        .icon:hover{
+            transform: translateY(-10px);       
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .menu-elem {
+            list-style: none;  
+        }
+
+        .menu-icon {
+            color: white;
+            font-size: 20px;
+            display: inline-block;
+            text-decoration: none;
+            margin: 5px 10px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            opacity: 1;
+        }
+
+        .text{
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/templates/home.html">
+                <i class="fa-solid fa-compact-disc" style="color: #000000;"></i>
+                Disco Rock
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse"    id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/templates/signin.html">Iniciar Sesion</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/templates/signup.html">Registrar</a>
+                    </li>
+                    
+                      <li class="nav-item">
+                        <a class="nav-link" href="/templates/user.html">Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/templates/usuarios.html">
+                          <i class="fa-solid fa-user" style="color: white"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/templates/productos.html">
+                            <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
+                        </a>
+                    </li>
+                </ul>
+               
+            </div>
+        </div>
+    </nav>
+
+    <div id="carouselExample" class="carousel slide">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="/static/img/carousel_1.jpg" class="" alt="" height="650">
+          </div>
+          <div class="carousel-item">
+            <img src="/static/img/carousel_2.jpg" class="" alt="" height="650">
+          </div>
+          <div class="carousel-item">
+            <img src="/static/img/carousel_3.jpg" class="" alt="" height="650">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+
+   
+
+    <main class="main-section">
+      <p><h1>Explora un mundo de Instrumentos</h1>
+
+       
+        <div class="image-container">
+            <img src="/static/img/img_1.jpg" alt="" width="350" height="500">
+            <div class="text-overlay"></div>
+        </div>
+
+        <div class="image-container">
+            <img src="/static/img/img_2.jpg" alt="" width="350" height="500">
+            <div class="text-overlay"></div>
+        </div>
+
+        <div class="image-container">
+            <img src="/static/img/img_3.jpg" alt="" width="350" height="500">
+            <div class="text-overlay"></div>
+        </div>
+        </main>
+        <main class="main-section">
+        <div class="image-container">
+              <img src="/static/img/img_4.jpg" alt="" width="350" height="500">
+              <div class="text-overlay"></div>
+        </div>
+        
+        <div class="image-container">
+              <img src="/static/img/img_5.jpg" alt="" width="350" height="500">
+              <div class="text-overlay"></div>
+        </div>
+  
+        <div class="image-container">
+              <img src="/static/img/img_6.jpg" alt="" width="350" height="500">
+              <div class="text-overlay"></div>
+          </div>
+        </main>
+
+        <main class="main-section">
+        <div class="image-container">
+            <img src="/static/img/img_7.jpg" alt="" width="350" height="500">
+            <div class="text-overlay"></div>
+      </div>
+      
+
+      <div class="image-container">
+            <img src="/static/img/img_8.jpg" alt="" width="350" height="500">
+            <div class="text-overlay"></div>
+      </div>
+
+      <div class="image-container">
+            <img src="/static/img/img_9.jpg" alt="" width="350" height="500">
+            <div class="text-overlay"></div>
+        </div>
+      </main>
+
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    <p></p>
+    
+  
+<footer class="footer">
+        <ul class="social-icon">
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-youtube" style="color: #000000;"></i>
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-instagram" style="color: #000000;"></i>  
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-whatsapp" style="color: #000000;"></i>
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-brands fa-facebook" style="color: #000000;"></i> 
+                </a>
+            </li>
+            <li class="icon-elem">
+                <a href="" class="icon">
+                    <i class="fa-regular fa-envelope" style="color: #000000;"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="menu">
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Inicio</a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon"> Equipo</a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon">Contacto </a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon">Video </a>
+            </li>
+            <li class="menu-elem">
+                <a href="" class="menu-icon">Sobre Nosotros </a>
+            </li>
+        </ul>
+        <p class="text">Todos los derechos reservados</p>
+        <p class="text">© 2024 Disco Rock, Inc</p>
+</footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+
+</html>
+
+
