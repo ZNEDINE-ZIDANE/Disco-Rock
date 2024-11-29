@@ -1,6 +1,9 @@
 
 <!DOCTYPE html>
 <html lang="es">
+  {% extends 'layout.html' %}
+    {% block titulo %} Iniciar Sesion {% endblock %}
+    {% block contenido %}
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -149,47 +152,7 @@
 </head>
 <body>
 
-  <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/templates/home.html">
-            <i class="fa-solid fa-compact-disc" style="color: #000000;"></i>
-            Disco Rock
-    
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/templates/home.html">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/templates/signup.html">Registrar
-          <a href="/templates/signup.html"></a> 
-        </li>
-        <li class="nav-item">
-          <li class="nav-item">
-            <a class="nav-link" href="/templates/usuarios.html">
-              <i class="fa-solid fa-user" style="color: white"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/templates/productos.html">
-                <i class="fa-solid fa-cart-shopping" style="color: white;"></i>
-            </a>
-        </li>
-        </li>
-      </ul>
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">
-          <i class="fa-solid fa-magnifying-glass" style="color: #74C0FC;"></i>
-        </button>
-      </form>
-    </div>
-  </div>
-</nav>
+  
 
 <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
   <form action="/signin" method="post" style="width: 100%; max-width: 400px;">
@@ -269,5 +232,5 @@
 </body>
 </html>
 
-
+{% endblock %}
   

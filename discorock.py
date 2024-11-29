@@ -1,4 +1,4 @@
-from flask import Flask,render_template,url_for, request, redirect, flash
+from flask import Flask,render_template,url_for, request, redirect, flash, session
 from flask_mysqldb import MySQL
 from flask_login import LoginManager, login_user, logout_user
 from flask_mail import Mail, Message
@@ -9,7 +9,8 @@ from models.ModelUser import ModelUser
 from models.entities.User import User
 
 discorockApp = Flask(__name__)  
-db           = MySQL(discorockApp)
+
+
 discorockApp.config.from_object(config['development'])
 discorockApp.config.from_object(config['mail'])
 db           = MySQL(discorockApp)
@@ -24,7 +25,7 @@ def agregarUsuario(id):
 
 @discorockApp.route('/')
 def home():
-    return render_template('usuarios.html')
+    return render_template('home.html')
 
 @discorockApp.route('/signup',methods=['GET','POST'])
 def signup():
@@ -43,24 +44,27 @@ def signup():
     else:
         return render_template('signup.html')
     
-@discorockApp.route('/signin',methods=['GET','POST'])
+@discorockApp.route('/signin', methods=['GET', 'POST'])
 def signin():
     if request.method == 'POST':
-        usuario = User(None,None,request.form['correo'],request.form['clave'],None,None)
+        usuario = User(0, None, request.form['correo'], request.form['clave'], None, None)
+
         usuarioAutenticado = ModelUser.sigin(db, usuario)
         if usuarioAutenticado is not None:
-            login_user(usuarioAutenticado)
-            if usuarioAutenticado.clave:
-                if usuarioAutenticado.perfil == 'A':
-                    return render_template('admin.html')
+            if usuarioAutenticado.clave:  
+                login_user(usuarioAutenticado)
+                session['NombreU'] = usuarioAutenticado.nombre
+                session['PerfilU'] = usuarioAutenticado.perfil
+                if usuarioAutenticado.perfil == 'U':
+                    return render_template('user.html')  
                 else:
-                    return render_template('user.html')
+                    render_template('admin.html') 
             else:
                 flash('Contraseña incorrecta')
-                return redirect(request.url)
+                return redirect(request.url)    
         else:
-                flash('Usuario inexistente')
-                return redirect(request.url)
+            flash('Usuario inexistente')
+            return redirect(request.url)
     else:
         return render_template('signin.html')
 
@@ -121,6 +125,68 @@ def sProducto():
     p = selProducto.fetchall()
     selProducto.close()
     return render_template('productos.html',productos=p)
+
+@discorockApp.route('/iProducto', methods=['GET', 'POST'])
+def agregarProducto():
+    if request.method == 'POST':
+        
+        anio = request.form['nombre']
+        producto = request.form['precio']
+        cantidad = request.form['cantidad']
+        precio = request.form['categoria']
+        
+        
+        cursor = db.connection.cursor()
+        cursor.execute("""
+            INSERT INTO producto (nombre, precio, cantidad, categoria)
+            VALUES (%s, %s, %s, %s)
+        """, (anio, producto, cantidad, precio))
+        db.connection.commit()
+        cursor.close()
+        
+      
+        return redirect(url_for('sProducto'))
+    
+    return render_template('agregarProducto.html')
+
+@discorockApp.route('/uProducto/<int:idProducto>', methods=['GET', 'POST'])
+def modificarProducto(idProducto):
+    cursor = db.connection.cursor()
+    cursor.execute("SELECT * FROM producto WHERE idProducto = %s", (idProducto,))
+    producto = cursor.fetchone()
+    
+    if request.method == 'POST':
+       
+        anio = request.form['nombre']
+        producto_nombre = request.form['precio']
+        cantidad = request.form['cantidad']
+        precio = request.form['categoria']
+        
+        
+        cursor.execute("""
+            UPDATE producto
+            SET nombre = %s, precio = %s, cantidad = %s, categoria = %s
+            WHERE idProducto = %s
+        """, (anio, producto_nombre, cantidad, precio, idProducto))
+        db.connection.commit()
+        cursor.close()
+        
+        
+        return redirect(url_for('sProducto'))
+    
+    return render_template('modificarProducto.html', producto=producto)
+
+@discorockApp.route('/dProducto/<int:idProducto>', methods=['GET', 'POST'])
+def eliminarProducto(idProducto):
+    if request.method == 'POST':
+        
+        cursor = db.connection.cursor()
+        cursor.execute("DELETE FROM producto WHERE idProducto = %s", (idProducto,))
+        db.connection.commit()
+        cursor.close()
+        return redirect(url_for('sProducto'))
+    return render_template('eliminarProducto.html', idProducto=idProducto)
+
 
 
 if __name__ == '__main__':

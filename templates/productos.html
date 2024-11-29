@@ -1,5 +1,7 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'layout.html' %}
+{% block titulo %} Disco Rock Productos {% endblock %}
+
+{% block contenido %}
 
 <head>
     <meta charset="UTF-8">
@@ -13,68 +15,67 @@
 
     <style>
         body {
-          background-color: #d5d8dc;
-          font-family: Arial, sans-serif;
+            background-color: #d5d8dc;
+            font-family: Arial, sans-serif;
         }
-    
-    
-         nav.navbar {
-          background-color: red;
-          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+        nav.navbar {
+            background-color: red;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-    
+
         .navbar-brand {
-          font-weight: bold;
-          font-size: 1.5rem;
-          color: white !important;
+            font-weight: bold;
+            font-size: 1.5rem;
+            color: white !important;
         }
-    
+
         .nav-link {
-          font-size: 1.1rem;
-          color: black !important;
+            font-size: 1.1rem;
+            color: black !important;
         }
-    
+
         .nav-link:hover {
-          color: grey !important;
+            color: grey !important;
         }
-    
+
         .form-control {
-          border-radius: 10px;
+            border-radius: 10px;
         }
-    
+
         button.btn {
-          border-radius: 10px;
+            border-radius: 10px;
         }
-    
+
         form {
-          background-color: white;
-          padding: 30px;
-          border-radius: 10px;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
-    
+
         .btn-primary {
-          background-color: #74C0FC;
-          border-color: #74C0FC;
+            background-color: #74C0FC;
+            border-color: #74C0FC;
         }
-    
+
         .btn-primary:hover {
-          background-color: #5A9ED8;
-          border-color: #5A9ED8;
+            background-color: #5A9ED8;
+            border-color: #5A9ED8;
         }
-    
+
         /* Responsivo para pantalla pequeña */
         @media (max-width: 768px) {
-          .navbar-brand {
-            font-size: 1.2rem;
-          }
-    
-          .nav-link {
-            font-size: 1rem;
-          }
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+
+            .nav-link {
+                font-size: 1rem;
+            }
         }
-    
-        .footer{
+
+        .footer {
             position: relative;
             width: 100%;
             background: red;
@@ -83,291 +84,237 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-           }
-    
-            .social-icon{
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                position: relative;
-                margin: 10px 5px;
-                flex-wrap: wrap;
-            }       
-    
-            .icon-elem {
-                list-style: none;
-            }
-    
-            .icon{
-                color: white;
-                font-size: 32px;
-                display: inline-block;
-                margin: 0 10px;
-                transition: 0.5s;      
-            }
-    
-            .icon:hover{
-                transform: translateY(-10px);       
-            }
-    
-            .menu {
-                display: flex;
-                justify-content: center;
-                position: relative;
-                align-items: center;
-                margin: 10px 0;
-                flex-wrap: wrap;
-            }
-    
-            .menu-elem {
-                list-style: none;  
-            }
-    
-            .menu-icon {
-                color: white;
-                font-size: 20px;
-                display: inline-block;
-                text-decoration: none;
-                margin: 5px 10px;
-                opacity: 0.5;
-                transition: 0.3s;
-            }
-    
-            .menu-icon:hover {
-                opacity: 1;
-            }
-    
-            .text{
-                color: white;
-                text-align: center;
-                margin-top: 15px;
-                margin-bottom: 10px;
-                font-size: 20px;
-            }
-    </style>
+        }
 
-<nav class="navbar navbar-expand-lg">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="/templates/home.html">
-            <i class="fa-solid fa-compact-disc" style="color: #000000;"></i>
-            Disco Rock
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/"></a>
-                </li>
-      
-        <div><a class="nav-link" href="/signup"> </a>
-            
-        </div>
-        <a class="nav-link" href="/signout"> <i class="fa-solid fa-right-from-bracket" style="color: white"></i></i> </a>
-        
-        </ul>
-        <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit"><i class="fa-solid fa-magnifying-glass" style="color: #570b6e;"></i></button>
-        
-        </form>
-    
-    
-    </div>
-    </div>
-</nav>
+        .social-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            margin: 10px 5px;
+            flex-wrap: wrap;
+        }
+
+        .icon-elem {
+            list-style: none;
+        }
+
+        .icon {
+            color: white;
+            font-size: 32px;
+            display: inline-block;
+            margin: 0 10px;
+            transition: 0.5s;
+        }
+
+        .icon:hover {
+            transform: translateY(-10px);
+        }
+
+        .menu {
+            display: flex;
+            justify-content: center;
+            position: relative;
+            align-items: center;
+            margin: 10px 0;
+            flex-wrap: wrap;
+        }
+
+        .menu-elem {
+            list-style: none;
+        }
+
+        .menu-icon {
+            color: white;
+            font-size: 20px;
+            display: inline-block;
+            text-decoration: none;
+            margin: 5px 10px;
+            opacity: 0.5;
+            transition: 0.3s;
+        }
+
+        .menu-icon:hover {
+            opacity: 1;
+        }
+
+        .text {
+            color: white;
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+    </style>
+</head>
 
 <div class="container">
+    <h1 class="text-center my-4">Productos de Disco Rock</h1>
 
-    <table class="table">
+    <!-- Tabla de productos -->
+    <table class="table table-striped">
         <thead>
             <tr>
-                <th scope="col">IDP</th>
-                <th scope="col">NOMBRE</th>
-                <th scope="col">PRECIO</th>
-                <th scope="col">CANTIDAD</th>
+                <th scope="col">ID Producto</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col">Categoria</th>
                 <th scope="col" colspan="2">
-                
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
-            <i class="fa-solid fa-user-plus" style="color: #ffffff;"></i>
-        </button>
+                    <!-- Botón para agregar producto -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#insertar">
+                        <i class="fa-solid fa-plus-circle" style="color: #ffffff;"></i> Agregar Producto
+                    </button>
                 </th>
             </tr>
-            
-        <div class="modal fade" id="insertar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Agregar Usuario</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/iProducto" method="post">
-                <div class="modal-body">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="text" name="nombre" class="form-control" id="exampleInputUser1" aria-describedby="userHelp" required>
-                <div id="emailHelp" class="form-text"></div>
-
-                <label for="exampleInputEmail1" class="form-label">Correo</label>
-                <input type="email" name="correo" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                <div id="emailHelp" class="form-text"></div>
-                
-                <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" name="clave" class="form-control" id="exampleInputPassword1" required>
-                
-
-                <label for="exampleInputUser" class="form-label">Perfil</label>
-                <select name="perfil">
-                <option value="A">Administrador</option>
-                <option value="U">Usuario Final</option>
-                </select>
-                
-                
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-                </div>
-                </form>
-            </div>
-            </div>
-        </div>
         </thead>
         <tbody>
-                    
+            {% for p in productos %}
             <tr>
-                <th scope="row">{{u.0}}</th>
-                <td>{{p.1}}</td>
-                <td>{{p.2}}</td>
-                <td>{{p.4}}</td>
-                <td>{{p.5}}</td>
+                <th scope="row">{{ p[0] }}</th>
+                <td>{{ p[1] }}</td>
+                <td>${{ p[2] }}</td>
+                <td>{{ p[3] }}</td>
+                <td>{{ p[4] }}</td>
                 <td>
-                    <!-- Button editar -->
-                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editar{{u.0}}">
-                        <i class="fa-solid fa-user-pen" style="color: #74C0FC;"></i>
+                    <!-- Botón de editar -->
+                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal"
+                        data-bs-target="#editar{{ p[0] }}">
+                        <i class="fa-solid fa-pencil-alt" style="color: #ffffff;"></i> Editar
                     </button>
-
                 </td>
-                    <td>      
-                            <!-- Button eliminar -->
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eliminar{{u.0}}">
-                        <i class="fa-solid fa-user-xmark" style="color: #74C0FC;"></i>
+                <td>
+                    <!-- Botón de eliminar -->
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal"
+                        data-bs-target="#eliminar{{ p[0] }}">
+                        <i class="fa-solid fa-trash-alt" style="color: #ffffff;"></i> Eliminar
                     </button>
-                    </td>
+                </td>
             </tr>
-        
-        <!-- Modal editar -->
-        <div class="modal fade" id="editar{{u.0}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Editar producto</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="/uProducto/{{u.0}}" method="post">
-                <div class="modal-body">
-                <label for="exampleInputEmail1" class="form-label">Nombre</label>
-                <input type="text" name="nombre" value="{{u.1}}" class="form-control" id="exampleInputUser1" aria-describedby="userHelp" required>
-                <div id="emailHelp" class="form-text"></div>
 
-                <label for="exampleInputEmail1" class="form-label">Correo</label>
-                <input type="email" name="correo" value="{{u.2}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
-                <div id="emailHelp" class="form-text"></div>
-                
-                
-                <label for="exampleInputPassword1" class="form-label">Contraseña</label>
-                <input type="password" name="clave" class="form-control" id="exampleInputPassword1" required>
-            
-                <label for="exampleInputUser" class="form-label">Perfil</label>
-                <select name="perfil">
-                {% if u.5 =='U' %}
-                <option selected value="U">Usuario Final</option>
-                <option value="A">Administrador</option>
-                {% else %}
-                <option selected value="A">Administrador</option>
-                <option value="U">Usuario Final</option>
-                {% endif %}
-                
-                
-                </select>
-            
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            <!-- Modal editar producto -->
+            <div class="modal fade" id="editar{{ p[0] }}" tabindex="-1" aria-labelledby="editarProducto{{ p[0] }}"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editarProducto{{ p[0] }}">Editar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/uProducto/{{ p[0] }}" method="POST">
+                            <div class="modal-body">
+                                <label for="nombre" class="form-label">Nombre</label>
+                                <input type="text" name="nombre" value="{{ p[1] }}" class="form-control" required>
+
+                                <label for="precio" class="form-label">Precio</label>
+                                <input type="number" name="precio" value="{{ p[2] }}" class="form-control" required>
+
+                                <label for="cantidad" class="form-label">Cantidad</label>
+                                <input type="number" name="cantidad" value="{{ p[3] }}" class="form-control" required>
+
+
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select name="categoria" class="form-control" required>
+                                    <option {% if p[4]=='Con existencias' %} selected {% endif %}
+                                        value="Con existencias">Disponibles</option>
+                                    <option {% if p[4]=='Sin existencias' %} selected {% endif %}
+                                        value="Sin existencias">No Disponibles</option>
+                                </select>
+
+
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Guardar cambios</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                </form>
             </div>
-            </div>
-        </div>
-        
-        <!-- Modal eliminar -->
-        <div class="modal fade" id="eliminar{{u.0}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel">Eliminar Usuario</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+            <!-- Modal eliminar producto -->
+            <div class="modal fade" id="eliminar{{ p[0] }}" tabindex="-1" aria-labelledby="eliminarProducto{{ p[0] }}"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="eliminarProducto{{ p[0] }}">Eliminar Producto</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <form action="/dProducto/{{ p[0] }}" method="POST">
+                            <div class="modal-body">
+                                <p>¿Estás seguro de eliminar el producto {{ p[1] }}?</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary"
+                                    data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-                <form action="/dProducto/{u.0}">
-                <div class="modal-body">
-                <p>¿Estas seguro de eliminar el usuario {{u.1}}?</p>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-primary">Eliminar</button>
-                </div>
-            </form>
             </div>
-            </div>
-        </div>
+
             {% endfor %}
         </tbody>
     </table>
 </div>
+
+<!-- Modal para insertar un nuevo producto -->
+<div class="modal fade" id="insertar" tabindex="-1" aria-labelledby="insertarProducto" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="insertarProducto">Agregar Producto</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="/iProducto" method="POST">
+                <div class="modal-body">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" name="nombre" class="form-control" required>
+
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="number" name="precio" class="form-control" required>
+
+                    <label for="cantidad" class="form-label">Cantidad</label>
+                    <input type="number" name="cantidad" class="form-control" required>
+
+                    <label for="categoria" class="form-label">Categoría</label>
+                    <select name="categoria" class="form-control" required>
+                        <option value="Con existencias">Disponibles</option>
+                        <option value="Sin existencias">No Disponibles</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
 <footer class="footer">
     <ul class="social-icon">
         <li class="icon-elem">
-            <a href="" class="icon">
-                <i class="fa-brands fa-youtube" style="color: #000000;"></i>
-            </a>
+            <a href="#" class="icon"><i class="fa-brands fa-youtube"></i></a>
         </li>
         <li class="icon-elem">
-            <a href="" class="icon">
-                <i class="fa-brands fa-instagram" style="color: #000000;"></i>  
-            </a>
+            <a href="#" class="icon"><i class="fa-brands fa-instagram"></i></a>
         </li>
         <li class="icon-elem">
-            <a href="" class="icon">
-                <i class="fa-brands fa-whatsapp" style="color: #000000;"></i>
-            </a>
+            <a href="#" class="icon"><i class="fa-brands fa-whatsapp"></i></a>
         </li>
         <li class="icon-elem">
-            <a href="" class="icon">
-                <i class="fa-brands fa-facebook" style="color: #000000;"></i> 
-            </a>
+            <a href="#" class="icon"><i class="fa-brands fa-facebook"></i></a>
         </li>
         <li class="icon-elem">
-            <a href="" class="icon">
-                <i class="fa-regular fa-envelope" style="color: #000000;"></i>
-            </a>
+            <a href="#" class="icon"><i class="fa-regular fa-envelope"></i></a>
         </li>
     </ul>
-    <ul class="menu">
-        <li class="menu-elem">
-            <a href="" class="menu-icon"> Inicio</a>
-        </li>
-        <li class="menu-elem">
-            <a href="" class="menu-icon"> Equipo</a>
-        </li>
-        <li class="menu-elem">
-            <a href="" class="menu-icon">Contacto </a>
-        </li>
-        <li class="menu-elem">
-            <a href="" class="menu-icon">Video </a>
-        </li>
-        <li class="menu-elem">
-            <a href="" class="menu-icon">Sobre Nosotros </a>
-        </li>
-    </ul>
-    <p class="text">Todos los derechos reservados</p>
-    <p class="text">© 2024 Disco Rock, Inc</p>
 </footer>
+
+{% endblock %}

@@ -6,12 +6,12 @@ class ConfigDeveloment(Config):
     MYSQL_HOST      = 'localhost'
     MYSQL_USER      = 'root'
     MYSQL_PASSWORD  = 'mysql'
-    MYSQL_DB        = 'soundwave'
+    MYSQL_DB        = 'rock'
     
 '''
     #pythonanywhere
     MYSQL_HOST      = ''
-    MYSQL_USER      = 'discorock'
+    MYSQL_USER      = 'rock'
     MYSQL_PASSWORD  = ''
     MYSQL_DB        = ''
       
