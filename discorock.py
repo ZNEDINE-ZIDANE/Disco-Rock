@@ -1,13 +1,13 @@
 from flask import Flask,render_template,url_for, request, redirect, flash, session
 from flask_mysqldb import MySQL
-from flask_login import LoginManager, login_user, logout_user
+from flask_login import LoginManager, login_user, logout_user, current_user
 from flask_mail import Mail, Message
 from config import config
 from werkzeug.security import generate_password_hash
 import datetime
 from models.ModelUser import ModelUser
 from models.entities.User import User
-
+import os
 discorockApp = Flask(__name__)  
 
 
@@ -23,9 +23,26 @@ adminsesion  = LoginManager(discorockApp)
 def agregarUsuario(id):
     return ModelUser.get_by_id(db,id)
 
+@discorockApp.context_processor
+def barrotas():
+    if current_user.is_authenticated:
+        inu = f'<a class="nav-link active" aria-current="page">{current_user.nombre}</a>'
+        re = '<a class="nav-link" href="/signout">Cerrar Sesion</a>'
+    else:
+        inu = '<a class="nav-link active" aria-current="page" href="/signin">Iniciar Sesion</a>'
+        re = '<a class="nav-link" href="/signup">Registrar</a>'
+
+    #asar las variables a layout
+    return dict(iniciar=inu, registrar=re)
+
+
 @discorockApp.route('/')
 def home():
     return render_template('home.html')
+
+@discorockApp.route('/user')
+def usurs():
+    return render_template('user.html')
 
 @discorockApp.route('/signup',methods=['GET','POST'])
 def signup():
@@ -37,8 +54,12 @@ def signup():
         regUsuario = db.connection.cursor()
         regUsuario.execute("INSERT INTO usuario (nombre,correo,clave,fechareg)VALUES (%s,%s,%s,%s)",(nombre,correo,clave,fechareg)) 
         db.connection.commit()
-        msg = Message("Bienvenido a SoundWave", recipients=[correo])
-        msg.html = render_template('mail.html', nombre  =   nombre)
+
+        msg = Message(subject='Bienvenido a Spendy', recipients=[correo])
+        msg.html = render_template('mail.html', nombre=nombre)
+        with discorockApp.open_resource(os.path.join('static', 'img', 'guta.jpg')) as img:
+                msg.attach('guta.jpg', 'image/jpg', img.read(), headers={'Content-ID': '<Img>'})
+        
         mail.send(msg)
         return render_template('home.html')
     else:
